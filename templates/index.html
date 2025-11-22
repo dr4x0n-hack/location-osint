@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My OSINT Tools</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>My Personal OSINT Tools</h1>
+    
+    <form method="POST">
+        <input type="text" name="query" placeholder="Enter location, IP, or keyword" value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+    {% for tool in tools %}
+        <li>
+            <a href="{{ tool.url }}" target="_blank">{{ tool.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% if query %}
+        <p>You searched for: <strong>{{ query }}</strong></p>
+        <p>Click any tool above and search manually.</p>
+    {% endif %}
+</body>
+</html>
